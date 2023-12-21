@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lawyers",
+  "info": {
+    "singularName": "lawyer",
+    "pluralName": "lawyers",
+    "displayName": "lawyer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "prue": {
+      "type": "string"
+    },
+    "pruba": {
+      "type": "string"
+    }
+  }
+}

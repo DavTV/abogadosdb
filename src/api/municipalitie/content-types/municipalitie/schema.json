@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "municipalities",
+  "info": {
+    "singularName": "municipalitie",
+    "pluralName": "municipalities",
+    "displayName": "municipalitie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "prueba": {
+      "type": "string"
+    }
+  }
+}
