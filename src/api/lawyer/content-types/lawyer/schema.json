@@ -64,6 +64,11 @@
       "type": "email",
       "required": true,
       "unique": true
+    },
+    "password": {
+      "type": "text",
+      "required": true,
+      "unique": true
     }
   }
 }

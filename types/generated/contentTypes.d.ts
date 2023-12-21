@@ -875,6 +875,7 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
       'api::specialty.specialty'
     >;
     email: Attribute.Email & Attribute.Required & Attribute.Unique;
+    password: Attribute.Text & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
