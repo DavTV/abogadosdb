@@ -362,187 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiDepartamentDepartament extends Schema.CollectionType {
-  collectionName: 'departaments';
-  info: {
-    singularName: 'departament';
-    pluralName: 'departaments';
-    displayName: 'departament';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    prueba: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::departament.departament',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::departament.departament',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiExperienceExperience extends Schema.CollectionType {
-  collectionName: 'experiences';
-  info: {
-    singularName: 'experience';
-    pluralName: 'experiences';
-    displayName: 'experience';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    prueba: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::experience.experience',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::experience.experience',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLawyerLawyer extends Schema.CollectionType {
-  collectionName: 'lawyers';
-  info: {
-    singularName: 'lawyer';
-    pluralName: 'lawyers';
-    displayName: 'lawyer';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    prue: Attribute.String;
-    pruba: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::lawyer.lawyer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::lawyer.lawyer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiMunicipalitieMunicipalitie extends Schema.CollectionType {
-  collectionName: 'municipalities';
-  info: {
-    singularName: 'municipalitie';
-    pluralName: 'municipalities';
-    displayName: 'municipalitie';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    prueba: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::municipalitie.municipalitie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::municipalitie.municipalitie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSpecialtySpecialty extends Schema.CollectionType {
-  collectionName: 'specialties';
-  info: {
-    singularName: 'specialty';
-    pluralName: 'specialties';
-    displayName: 'specialty';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    prueba: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::specialty.specialty',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::specialty.specialty',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTestimonyTestimony extends Schema.CollectionType {
-  collectionName: 'testimonies';
-  info: {
-    singularName: 'testimony';
-    pluralName: 'testimonies';
-    displayName: 'testimony';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    prueba: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::testimony.testimony',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::testimony.testimony',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -949,6 +768,240 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiDepartamentDepartament extends Schema.CollectionType {
+  collectionName: 'departaments';
+  info: {
+    singularName: 'departament';
+    pluralName: 'departaments';
+    displayName: 'departament';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    coordinate: Attribute.String;
+    municipalities: Attribute.Relation<
+      'api::departament.departament',
+      'oneToMany',
+      'api::municipalitie.municipalitie'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::departament.departament',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::departament.departament',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExperienceExperience extends Schema.CollectionType {
+  collectionName: 'experiences';
+  info: {
+    singularName: 'experience';
+    pluralName: 'experiences';
+    displayName: 'experience';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description: Attribute.Text;
+    lawyer: Attribute.Relation<
+      'api::experience.experience',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLawyerLawyer extends Schema.CollectionType {
+  collectionName: 'lawyers';
+  info: {
+    singularName: 'lawyer';
+    pluralName: 'lawyers';
+    displayName: 'lawyer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    experiences: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::experience.experience'
+    >;
+    photo: Attribute.Media;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    location: Attribute.String;
+    phone: Attribute.Integer;
+    prime: Attribute.Boolean & Attribute.DefaultTo<false>;
+    school_number: Attribute.String & Attribute.Required & Attribute.Unique;
+    municipalities: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::municipalitie.municipalitie'
+    >;
+    specialties: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::specialty.specialty'
+    >;
+    email: Attribute.Email & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMunicipalitieMunicipalitie extends Schema.CollectionType {
+  collectionName: 'municipalities';
+  info: {
+    singularName: 'municipalitie';
+    pluralName: 'municipalities';
+    displayName: 'municipalitie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    prueba: Attribute.String;
+    departament: Attribute.Relation<
+      'api::municipalitie.municipalitie',
+      'manyToOne',
+      'api::departament.departament'
+    >;
+    lawyer: Attribute.Relation<
+      'api::municipalitie.municipalitie',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::municipalitie.municipalitie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::municipalitie.municipalitie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSpecialtySpecialty extends Schema.CollectionType {
+  collectionName: 'specialties';
+  info: {
+    singularName: 'specialty';
+    pluralName: 'specialties';
+    displayName: 'specialty';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text;
+    lawyer: Attribute.Relation<
+      'api::specialty.specialty',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::specialty.specialty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::specialty.specialty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestimonyTestimony extends Schema.CollectionType {
+  collectionName: 'testimonies';
+  info: {
+    singularName: 'testimony';
+    pluralName: 'testimonies';
+    displayName: 'testimony';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description: Attribute.Text;
+    rating: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimony.testimony',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimony.testimony',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -959,12 +1012,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::departament.departament': ApiDepartamentDepartament;
-      'api::experience.experience': ApiExperienceExperience;
-      'api::lawyer.lawyer': ApiLawyerLawyer;
-      'api::municipalitie.municipalitie': ApiMunicipalitieMunicipalitie;
-      'api::specialty.specialty': ApiSpecialtySpecialty;
-      'api::testimony.testimony': ApiTestimonyTestimony;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -973,6 +1020,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::departament.departament': ApiDepartamentDepartament;
+      'api::experience.experience': ApiExperienceExperience;
+      'api::lawyer.lawyer': ApiLawyerLawyer;
+      'api::municipalitie.municipalitie': ApiMunicipalitieMunicipalitie;
+      'api::specialty.specialty': ApiSpecialtySpecialty;
+      'api::testimony.testimony': ApiTestimonyTestimony;
     }
   }
 }

@@ -4,15 +4,26 @@
   "info": {
     "singularName": "specialty",
     "pluralName": "specialties",
-    "displayName": "specialty"
+    "displayName": "specialty",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "prueba": {
-      "type": "string"
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "specialties"
     }
   }
 }

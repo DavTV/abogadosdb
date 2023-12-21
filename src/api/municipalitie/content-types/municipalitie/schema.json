@@ -13,6 +13,18 @@
   "attributes": {
     "prueba": {
       "type": "string"
+    },
+    "departament": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::departament.departament",
+      "inversedBy": "municipalities"
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "municipalities"
     }
   }
 }

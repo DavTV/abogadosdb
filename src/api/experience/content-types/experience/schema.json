@@ -4,15 +4,22 @@
   "info": {
     "singularName": "experience",
     "pluralName": "experiences",
-    "displayName": "experience"
+    "displayName": "experience",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "prueba": {
-      "type": "string"
+    "description": {
+      "type": "text"
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "experiences"
     }
   }
 }
