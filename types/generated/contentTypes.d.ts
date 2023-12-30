@@ -768,6 +768,37 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAttentionAttention extends Schema.CollectionType {
+  collectionName: 'attentions';
+  info: {
+    singularName: 'attention';
+    pluralName: 'attentions';
+    displayName: 'attention';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    hour: Attribute.Time;
+    day: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::attention.attention',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::attention.attention',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDepartamentDepartament extends Schema.CollectionType {
   collectionName: 'departaments';
   info: {
@@ -876,6 +907,11 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
     >;
     email: Attribute.Email & Attribute.Required & Attribute.Unique;
     password: Attribute.Text & Attribute.Required & Attribute.Unique;
+    attention: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToOne',
+      'api::attention.attention'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -900,12 +936,13 @@ export interface ApiMunicipalitieMunicipalitie extends Schema.CollectionType {
     singularName: 'municipalitie';
     pluralName: 'municipalities';
     displayName: 'municipalitie';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    prueba: Attribute.String;
+    name: Attribute.String;
     departament: Attribute.Relation<
       'api::municipalitie.municipalitie',
       'manyToOne',
@@ -1021,6 +1058,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::attention.attention': ApiAttentionAttention;
       'api::departament.departament': ApiDepartamentDepartament;
       'api::experience.experience': ApiExperienceExperience;
       'api::lawyer.lawyer': ApiLawyerLawyer;

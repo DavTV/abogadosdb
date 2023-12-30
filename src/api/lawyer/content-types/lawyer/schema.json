@@ -69,6 +69,11 @@
       "type": "text",
       "required": true,
       "unique": true
+    },
+    "attention": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::attention.attention"
     }
   }
 }

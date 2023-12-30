@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "attentions",
+  "info": {
+    "singularName": "attention",
+    "pluralName": "attentions",
+    "displayName": "attention"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hour": {
+      "type": "time"
+    },
+    "day": {
+      "type": "string"
+    }
+  }
+}
