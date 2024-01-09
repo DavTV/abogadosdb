@@ -806,31 +806,6 @@ export interface ApiAttentionAttention extends Schema.CollectionType {
   };
 }
 
-export interface ApiDayDay extends Schema.CollectionType {
-  collectionName: 'days';
-  info: {
-    singularName: 'day';
-    pluralName: 'days';
-    displayName: 'day';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    day: Attribute.String;
-    hourStart: Attribute.Time;
-    hourEnd: Attribute.Time;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::day.day', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::day.day', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface ApiDepartamentDepartament extends Schema.CollectionType {
   collectionName: 'departaments';
   info: {
@@ -1141,7 +1116,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::attention.attention': ApiAttentionAttention;
-      'api::day.day': ApiDayDay;
       'api::departament.departament': ApiDepartamentDepartament;
       'api::departament-lawyer.departament-lawyer': ApiDepartamentLawyerDepartamentLawyer;
       'api::experience.experience': ApiExperienceExperience;
