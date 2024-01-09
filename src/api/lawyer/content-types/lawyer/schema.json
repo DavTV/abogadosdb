@@ -70,10 +70,17 @@
       "required": true,
       "unique": true
     },
-    "attention": {
+    "attentions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::attention.attention",
+      "mappedBy": "lawyer"
+    },
+    "departament_lawyer": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::attention.attention"
+      "target": "api::departament-lawyer.departament-lawyer",
+      "mappedBy": "lawyer"
     }
   }
 }

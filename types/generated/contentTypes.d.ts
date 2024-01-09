@@ -774,13 +774,20 @@ export interface ApiAttentionAttention extends Schema.CollectionType {
     singularName: 'attention';
     pluralName: 'attentions';
     displayName: 'attention';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    hour: Attribute.Time;
+    lawyer: Attribute.Relation<
+      'api::attention.attention',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
     day: Attribute.String;
+    hourStart: Attribute.Time;
+    hourEnd: Attribute.Time;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -795,6 +802,31 @@ export interface ApiAttentionAttention extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDayDay extends Schema.CollectionType {
+  collectionName: 'days';
+  info: {
+    singularName: 'day';
+    pluralName: 'days';
+    displayName: 'day';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    day: Attribute.String;
+    hourStart: Attribute.Time;
+    hourEnd: Attribute.Time;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::day.day', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::day.day', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -829,6 +861,46 @@ export interface ApiDepartamentDepartament extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::departament.departament',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDepartamentLawyerDepartamentLawyer
+  extends Schema.CollectionType {
+  collectionName: 'departament_lawyers';
+  info: {
+    singularName: 'departament-lawyer';
+    pluralName: 'departament-lawyers';
+    displayName: 'departamentLawyer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    lawyer: Attribute.Relation<
+      'api::departament-lawyer.departament-lawyer',
+      'oneToOne',
+      'api::lawyer.lawyer'
+    >;
+    municipalities: Attribute.Relation<
+      'api::departament-lawyer.departament-lawyer',
+      'oneToMany',
+      'api::municipalitie.municipalitie'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::departament-lawyer.departament-lawyer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::departament-lawyer.departament-lawyer',
       'oneToOne',
       'admin::user'
     > &
@@ -907,10 +979,15 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
     >;
     email: Attribute.Email & Attribute.Required & Attribute.Unique;
     password: Attribute.Text & Attribute.Required & Attribute.Unique;
-    attention: Attribute.Relation<
+    attentions: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::attention.attention'
+    >;
+    departament_lawyer: Attribute.Relation<
       'api::lawyer.lawyer',
       'oneToOne',
-      'api::attention.attention'
+      'api::departament-lawyer.departament-lawyer'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -952,6 +1029,11 @@ export interface ApiMunicipalitieMunicipalitie extends Schema.CollectionType {
       'api::municipalitie.municipalitie',
       'manyToOne',
       'api::lawyer.lawyer'
+    >;
+    departament_lawyer: Attribute.Relation<
+      'api::municipalitie.municipalitie',
+      'manyToOne',
+      'api::departament-lawyer.departament-lawyer'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1059,7 +1141,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::attention.attention': ApiAttentionAttention;
+      'api::day.day': ApiDayDay;
       'api::departament.departament': ApiDepartamentDepartament;
+      'api::departament-lawyer.departament-lawyer': ApiDepartamentLawyerDepartamentLawyer;
       'api::experience.experience': ApiExperienceExperience;
       'api::lawyer.lawyer': ApiLawyerLawyer;
       'api::municipalitie.municipalitie': ApiMunicipalitieMunicipalitie;

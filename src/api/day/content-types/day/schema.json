@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "attentions",
+  "collectionName": "days",
   "info": {
-    "singularName": "attention",
-    "pluralName": "attentions",
-    "displayName": "attention",
+    "singularName": "day",
+    "pluralName": "days",
+    "displayName": "day",
     "description": ""
   },
   "options": {
@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "lawyer": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::lawyer.lawyer",
-      "inversedBy": "attentions"
-    },
     "day": {
       "type": "string"
     },

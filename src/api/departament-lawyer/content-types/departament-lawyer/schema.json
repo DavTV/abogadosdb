@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "departament_lawyers",
+  "info": {
+    "singularName": "departament-lawyer",
+    "pluralName": "departament-lawyers",
+    "displayName": "departamentLawyer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lawyer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "departament_lawyer"
+    },
+    "municipalities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::municipalitie.municipalitie",
+      "mappedBy": "departament_lawyer"
+    }
+  }
+}

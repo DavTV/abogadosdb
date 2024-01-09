@@ -26,6 +26,12 @@
       "relation": "manyToOne",
       "target": "api::lawyer.lawyer",
       "inversedBy": "municipalities"
+    },
+    "departament_lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::departament-lawyer.departament-lawyer",
+      "inversedBy": "municipalities"
     }
   }
 }
