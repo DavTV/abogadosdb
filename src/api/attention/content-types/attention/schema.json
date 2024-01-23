@@ -22,10 +22,10 @@
       "type": "string"
     },
     "hourStart": {
-      "type": "time"
+      "type": "string"
     },
     "hourEnd": {
-      "type": "time"
+      "type": "string"
     }
   }
 }

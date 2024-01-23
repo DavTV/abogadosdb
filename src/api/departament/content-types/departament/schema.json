@@ -24,6 +24,12 @@
       "relation": "oneToMany",
       "target": "api::municipalitie.municipalitie",
       "mappedBy": "departament"
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "departaments"
     }
   }
 }

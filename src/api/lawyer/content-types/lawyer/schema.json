@@ -81,6 +81,12 @@
       "relation": "oneToOne",
       "target": "api::departament-lawyer.departament-lawyer",
       "mappedBy": "lawyer"
+    },
+    "departaments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::departament.departament",
+      "mappedBy": "lawyer"
     }
   }
 }

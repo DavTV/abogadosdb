@@ -786,8 +786,8 @@ export interface ApiAttentionAttention extends Schema.CollectionType {
       'api::lawyer.lawyer'
     >;
     day: Attribute.String;
-    hourStart: Attribute.Time;
-    hourEnd: Attribute.Time;
+    hourStart: Attribute.String;
+    hourEnd: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -824,6 +824,11 @@ export interface ApiDepartamentDepartament extends Schema.CollectionType {
       'api::departament.departament',
       'oneToMany',
       'api::municipalitie.municipalitie'
+    >;
+    lawyer: Attribute.Relation<
+      'api::departament.departament',
+      'manyToOne',
+      'api::lawyer.lawyer'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -963,6 +968,11 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
       'api::lawyer.lawyer',
       'oneToOne',
       'api::departament-lawyer.departament-lawyer'
+    >;
+    departaments: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::departament.departament'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
